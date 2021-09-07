@@ -1,0 +1,5 @@
+https://www.educative.io/edpresso/how-to-convert-a-string-to-a-date-in-python
+https://www.w3schools.com/python/python_datetime.asp
+https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
+https://www.geeksforgeeks.org/hadoop-streaming-using-python-word-count-problem/
+https://stackoverflow.com/questions/30584364/python-strptime-format-with-optional-bits
