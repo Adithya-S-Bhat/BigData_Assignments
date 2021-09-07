@@ -2,9 +2,10 @@
 import sys
 import json
 from datetime import datetime
+import math
 
 def isNotNan(data):
-    if data["Description"] == "NaN" or data["Severity"].isNaN or data["Sunrise_Sunset"].isNaN or data["Visibility(mi)"].isNaN or data["Precipitation(in)"].isNaN or data["Weather_Condition"].isNaN:
+    if data["Description"]=="NaN" or math.isnan(data["Severity"]) or data["Sunrise_Sunset"] == "NaN" or math.isnan(data["Visibility(mi)"]) or math.isnan(data["Precipitation(in)"]) or data["Weather_Condition"]=="NaN":
         return False
     return True
 
@@ -17,8 +18,6 @@ def filterBasedOnConstraints(data):
                     if data["Precipitation(in)"]>=0.2:
                         if data["Weather_Condition"] == "Heavy Snow" or  data["Weather_Condition"] == "Thunderstorm" or data["Weather_Condition"] ==  "Heavy Rain" or data["Weather_Condition"] ==  "Heavy Rain Showers" or data["Weather_Condition"] == "Blowing Dust":
                             return True
-                else:
-                    print(type(data["Visibility(mi)"]))
     return False
 
 for line in sys.stdin:
@@ -37,4 +36,4 @@ for line in sys.stdin:
             #hour=datetime.strftime(dateTimeObject,"%H")
             hour=time.strftime(dateTimeObject,"%H")
             #hour=data["Start_Time"].hour"""
-            #print(hour,"\t1")
+            print(hour,"\t1")
