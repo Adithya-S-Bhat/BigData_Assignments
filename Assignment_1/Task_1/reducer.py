@@ -19,4 +19,4 @@ for line in sys.stdin:
         countDict[hour]=count
 
 for hour,count in countDict.items():
-    print(hour,"\t",count)
+    print(hour,count)

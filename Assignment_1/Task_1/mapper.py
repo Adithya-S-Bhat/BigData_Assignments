@@ -5,7 +5,16 @@ from datetime import datetime
 import math
 
 def isNotNan(data):
-    if data["Description"]=="NaN" or math.isnan(data["Severity"]) or data["Sunrise_Sunset"] == "NaN" or math.isnan(data["Visibility(mi)"]) or math.isnan(data["Precipitation(in)"]) or data["Weather_Condition"]=="NaN":
+    if type(data["Description"])!=str:
+        if math.isnan(data["Description"]):
+            return False
+    if type(data["Sunrise_Sunset"])!=str:
+        if math.isnan(data["Sunrise_Sunset"]):
+            return False
+    if type(data["Weather_Condition"])!=str:
+        if math.isnan(data["Weather_Condition"]):
+            return False
+    if math.isnan(data["Severity"]) or math.isnan(data["Visibility(mi)"]) or math.isnan(data["Precipitation(in)"]):
         return False
     return True
 
@@ -40,4 +49,4 @@ for line in sys.stdin:
                 dateTimeObject=datetime.strptime(str(data["Start_Time"]).strip(),"%Y-%m-%d %H:%M:%S")
             
             hour=datetime.strftime(dateTimeObject,"%H")
-            print(hour,"\t1")
+            print(hour+"\t1")
