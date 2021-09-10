@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 import sys
 
-stateDict=dict()
+previousState=""
+previousCity=""
+totalCount=0
+totalStateCount=0
 
 for line in sys.stdin:
     line = line.strip()
-    state,city,count = line.split("\t")
+    state,city,count = line.split('\t')
     state=state.strip()
     city=city.strip()
 
@@ -13,17 +16,25 @@ for line in sys.stdin:
         count=int(count.strip())
     except ValueError:
         continue
-
-    if state in stateDict.keys():
-        if city in stateDict[state].keys():
-            stateDict[state][city]+=count
-        else:
-            stateDict[state][city]=count
+    
+    if previousState!=state:
+        if previousCity!='':
+            print(previousCity,totalCount)
+        if previousState!='':
+            print(previousState,totalStateCount)
+        print(state)
+        previousState=state
+        previousCity=city
+        totalCount=count
+        totalStateCount=count
     else:
-        stateDict[state]=dict()
-
-for state,cityDict in stateDict.items():
-    print(state)
-    for city,count in cityDict.items():
-        print(city,count)
-
+        totalStateCount+=count
+        if previousCity!=city:
+            print(previousCity,totalCount)
+            previousCity=city
+            totalCount=count
+        else:
+            totalCount+=count
+    
+print(previousCity,totalCount)
+print(previousState,totalStateCount)
