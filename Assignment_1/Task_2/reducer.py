@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 import sys
 
 previousState=""
@@ -8,7 +8,7 @@ totalStateCount=0
 
 for line in sys.stdin:
     line = line.strip()
-    state,city,count = line.split('\t')
+    state,city,count = line.split(',')
     state=state.strip()
     city=city.strip()
 

@@ -28,4 +28,4 @@ for line in sys.stdin:
             response=requests.post("http://20.185.44.219:5000/",json=p).json()
             city=response["city"].strip()
             state=response["state"].strip()
-            print("{}\t{}\t1".format(state,city))
+            print("{},{},1".format(state,city))
