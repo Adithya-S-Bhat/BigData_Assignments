@@ -1,3 +1,7 @@
 #Ignore the json file
-Assignment_1/US_ACCIDENT_DATA_5PERCENT.json
-Assignment_1/US_ACCIDENT_DATA_15PERCENT.json
+A1/US_ACCIDENT_DATA_5PERCENT.json
+A1/US_ACCIDENT_DATA_15PERCENT.json
+A2/dataset_1percent.txt
+A2/adjList.txt
+A2/embedding_1percent.json
+A2/T2/adjList1.txt
