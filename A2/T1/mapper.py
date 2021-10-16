@@ -4,4 +4,5 @@ import sys
 
 for line in sys.stdin:
     line=line.strip()
-    print(line)
+    source,destination=line.split()
+    print("{} {}".format(source,destination))

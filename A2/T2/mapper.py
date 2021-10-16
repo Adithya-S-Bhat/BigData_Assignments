@@ -22,8 +22,6 @@ def similarity(p,q):
             product+=element1*element2
         except:
             continue
-    """product=p*q
-    result=sum(x for x in product)"""
     result=product/(norm(p)*norm(q))
     return result
 
@@ -31,8 +29,10 @@ vFilename,peFilename=sys.argv[1:]
 vfp=open(vFilename,"r")
 rankDict=dict()
 for line in vfp:
+    line=line.strip()
     node,rank=line.split(',')
     try:
+        rank=rank.strip()
         rank=float(rank)
         node=int(node)
     except:
@@ -47,22 +47,21 @@ for line in sys.stdin:
     source,destinationList=line.split('$')
 
     try:
-        destinationList=json.loads(destinationList)#[x for x in destinationList[1:-1]]
+        destinationList=json.loads(destinationList)
         source=int(source)
     except:
         continue
     
     n=len(destinationList)
+    contribution=rankDict[source]/n
+    print("{} $".format(source))
 
     for destination in destinationList:
         try:
             destination=int(destination)
-            sourceEmbedding=pe[str(source)]#
-            destEmbedding=pe[str(destination)]#
+            sourceEmbedding=pe[str(source)]
+            destEmbedding=pe[str(destination)]
         except:
             continue
-        if source in rankDict.keys():
-            value=(rankDict[source]/n)*similarity(sourceEmbedding,destEmbedding)
-        else:
-            value=0
-        print("{},{}".format(destination,value))
+        value=contribution*similarity(sourceEmbedding,destEmbedding)
+        print("{} {}".format(destination,value))
