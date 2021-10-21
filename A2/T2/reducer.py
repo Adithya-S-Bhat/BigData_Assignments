@@ -12,10 +12,11 @@ for line in sys.stdin:
     node,contribution=line.split(' ')
     try:
         node=int(node)
+        contribution=float(contribution)
     except:
         continue
 
-    if vertex!=-1:
+    """if vertex!=-1:
         if vertex!=node:
             if isSource==1:
                 rank=0.15+(0.85*sum)
@@ -37,8 +38,21 @@ for line in sys.stdin:
         if contribution=='$':
             isSource=1
             vertex=node
-            sum=0
+            sum=0"""
 
-if vertex!=-1 and isSource==1:
+    if vertex!=-1:
+        if vertex!=node:
+            rank=0.15+(0.85*sum)
+            print("{},{:.2f}".format(vertex,rank))
+            vertex=node
+            sum=contribution
+        else:
+            sum+=contribution
+    else:
+        vertex=node
+        sum=contribution
+
+#if vertex!=-1 and isSource==1:
+if vertex!=-1:
     rank=round(0.15+(0.85*sum),2)
-    print("{}, {:.2f}".format(vertex,rank))
+    print("{},{:.2f}".format(vertex,rank))

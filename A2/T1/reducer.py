@@ -24,11 +24,11 @@ for line in sys.stdin:
             destinationNodes.clear()
             destinationNodes.append(destination)
             sourceNode=source
-            fp.write("{}, 1\n".format(sourceNode))
+            fp.write("{},1\n".format(sourceNode))
     else:
         sourceNode=source
         destinationNodes.append(destination)
-        fp.write("{}, 1\n".format(sourceNode))
+        fp.write("{},1\n".format(sourceNode))
 
 if sourceNode!=-1:
     print("{}${}".format(source,destinationNodes))

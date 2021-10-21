@@ -54,7 +54,7 @@ for line in sys.stdin:
     
     n=len(destinationList)
     contribution=rankDict[source]/n
-    print("{} $".format(source))
+    print("{} 0".format(source))
 
     for destination in destinationList:
         try:
