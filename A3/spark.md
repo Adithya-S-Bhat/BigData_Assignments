@@ -104,5 +104,13 @@ df2=spark.createDataFrame(rdd2,schema=['k','v2'])
 df3=df1.join(df2,df1.k==df2.k,how="inner")
 df3.show()
 
+
+df=sqlContext.read.csv("BigData_Assignments/A3/city_sample_5percent.csv",header = True,inferSchema=True)
+citydf=df.dropna(how='any',subset=['AverageTemperature'])
+df=sqlContext.read.csv("BigData_Assignments/A3/global.csv",header = True,inferSchema=True)
+globaldf=df.dropna(how='any',subset=['LandAverageTemperature'])
+
+
+
 $SPARK_HOME/bin/spark-submit task1.py India city_sample.csv > output_sample_t1.txt 2> log_t1.txt
 $SPARK_HOME/bin/spark-submit task2.py city_sample.csv global_sample.csv 2> log.txt > output_sample_t2.txt
